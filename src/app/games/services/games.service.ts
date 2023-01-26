@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Game } from '../interfaces/game.interface';
+import { map, Observable } from 'rxjs';
+import { Game, GetAllGamesResponse } from '../interfaces/game.interface';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
@@ -14,15 +14,14 @@ export class GamesService {
 
   getAllGames(): Observable<Game[]> {
     //TODO: Better way to write params
-    return this.http.get<Game[]>(
-      `${this.GAME_API_HOST}api/games?sort-by=alphabetical`,
-      {
-        headers: new HttpHeaders({
-          'X-RapidAPI-Key':
-            '72a6367519msh255420edd8b174cp1764a5jsnf8b097f6bcd5',
-          'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
-        }),
-      }
-    );
+    return this.http
+      .get<GetAllGamesResponse>(
+        `${this.GAME_API_HOST}api/games?key=dd12649b804c41c1805049bc6b5c5803`
+      )
+      .pipe(
+        map((resp) => {
+          return resp.results;
+        })
+      );
   }
 }

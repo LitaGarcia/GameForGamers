@@ -1,13 +1,13 @@
 <p>gamescard works!</p>
 <p-card
   *ngFor="let game of games"
-  header="{{ game.title }}"
+  header="{{ game.name }}"
   subheader="Card Subheader"
   [style]="{ width: '360px' }"
   styleClass="shadow-2"
 >
   <ng-template pTemplate="header">
-    <img alt="Card" src="https://picsum.photos/200/200" />
+    <img alt="Card" src="{{ game.background_image }}" />
   </ng-template>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed
