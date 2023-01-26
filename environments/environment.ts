@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  API: 'https://www.freetogame.com/api/games',
+  GAME_API_HOST: 'https://free-to-play-games-database.p.rapidapi.com/',
 };

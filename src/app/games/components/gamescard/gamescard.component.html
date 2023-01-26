@@ -1,6 +1,7 @@
 <p>gamescard works!</p>
 <p-card
-  header="Advanced Card"
+  *ngFor="let game of games"
+  header="{{ game.title }}"
   subheader="Card Subheader"
   [style]="{ width: '360px' }"
   styleClass="shadow-2"
@@ -24,3 +25,4 @@
     ></p-button>
   </ng-template>
 </p-card>
+<!-- {{ games }} -->
