@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Game } from '../../interfaces/game.interface';
+import { Game, Genre } from '../../interfaces/game.interface';
 import { GamesService } from '../../services/games.service';
 
 @Component({
@@ -9,6 +9,14 @@ import { GamesService } from '../../services/games.service';
 })
 export class GamescardComponent {
   games!: Game[];
+
+  gameRating(rate: number): number {
+    return Math.floor(rate);
+  }
+
+  genreGameType(genre: string) {
+    //enum
+  }
 
   constructor(private gamesService: GamesService) {}
 

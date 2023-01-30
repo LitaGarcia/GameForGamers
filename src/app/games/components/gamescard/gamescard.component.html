@@ -2,27 +2,28 @@
 <p-card
   *ngFor="let game of games"
   header="{{ game.name }}"
-  subheader="Card Subheader"
   [style]="{ width: '360px' }"
   styleClass="shadow-2"
 >
+  <p-tag
+    *ngFor="let genre of game.genres"
+    value="{{ genre.name }}"
+    severity="{{ genreGameType(genre.name) }}"
+  ></p-tag>
+
+  <br />
+  <br />
   <ng-template pTemplate="header">
     <img alt="Card" src="{{ game.background_image }}" />
   </ng-template>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed
-    consequuntur error repudiandae numquam deserunt quisquam repellat libero
-    asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
-    neque quas!
-  </p>
+  <p-rating
+    ngModel="{{ gameRating(game.rating) }}"
+    [cancel]="false"
+    [readonly]="true"
+  >
+  </p-rating>
   <ng-template pTemplate="footer">
-    <p-button label="Save" icon="pi pi-check"></p-button>
-    <p-button
-      label="Cancel"
-      icon="pi pi-times"
-      styleClass="p-button-secondary"
-      [style]="{ 'margin-left': '.5em' }"
-    ></p-button>
+    <p-button icon="pi pi-external-link" label="More info"></p-button>
   </ng-template>
 </p-card>
 <!-- {{ games }} -->
