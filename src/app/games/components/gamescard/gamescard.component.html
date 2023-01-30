@@ -1,29 +1,40 @@
-<p>gamescard works!</p>
-<p-card
-  *ngFor="let game of games"
-  header="{{ game.name }}"
-  [style]="{ width: '360px' }"
-  styleClass="shadow-2"
->
-  <p-tag
-    *ngFor="let genre of game.genres"
-    value="{{ genre.name }}"
-    severity="{{ genreGameType(genre.name) }}"
-  ></p-tag>
+<div class="card">
+  <h1>Games</h1>
+  <div class="flex justify-content-center flex-wrap card-container gap-5">
+    <p-card
+      class="flex align-items-center"
+      *ngFor="let game of games"
+      header="{{ game.name }}"
+      styleClass="shadow-2"
+      [style]="{ width: '25rem' }"
+    >
+      <p-tag
+        [style]="{ margin: '0.25rem' }"
+        *ngFor="let genre of game.genres"
+        value="{{ genre.name }}"
+        severity="{{ genreStyle(genre.name) }}"
+      ></p-tag>
 
-  <br />
-  <br />
-  <ng-template pTemplate="header">
-    <img alt="Card" src="{{ game.background_image }}" />
-  </ng-template>
-  <p-rating
-    ngModel="{{ gameRating(game.rating) }}"
-    [cancel]="false"
-    [readonly]="true"
-  >
-  </p-rating>
-  <ng-template pTemplate="footer">
-    <p-button icon="pi pi-external-link" label="More info"></p-button>
-  </ng-template>
-</p-card>
-<!-- {{ games }} -->
+      <br />
+      <br />
+      <ng-template pTemplate="header">
+        <img
+          alt="Card"
+          src="{{ game.background_image }}"
+          style="width: 400; height: 225px"
+        />
+      </ng-template>
+      <p-rating
+        ngModel="{{ gameRating(game.rating) }}"
+        [cancel]="false"
+        [readonly]="true"
+        iconOnClass="pi pi-heart-fill"
+        iconOffClass="pi pi-heart"
+      >
+      </p-rating>
+      <ng-template pTemplate="footer">
+        <p-button icon="pi pi-external-link" label="More info"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
